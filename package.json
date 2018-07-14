@@ -1,0 +1,9 @@
+{
+  "name": "react_admin",
+  "version": "1.0.0",
+  "description": "react admin backend project",
+  "main": "index.js",
+  "repository": "git@github.com:rkmd77/react_admin.git",
+  "author": "rkmd77 <rochenz@outlook.com>",
+  "license": "MIT"
+}
