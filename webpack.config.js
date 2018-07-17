@@ -11,6 +11,12 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'js/bundle.js'
   },
+  resolve: {
+      alias:{
+          pages: path.resolve(__dirname, 'src/pages'),
+          component: path.resolve(__dirname, 'src/component')
+      }
+  },
   module: {
     rules: [
       {
@@ -23,13 +29,22 @@ module.exports = {
           }
         }
       },
+      // css文件的处理
       {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: "css-loader"
+        })
+    },
+    // sass文件的处理
+    {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+            fallback: 'style-loader',
+            use: ['css-loader', 'sass-loader']
         })
-      },
+    },
       {
         test: /\.(png|jpg|gif)$/,
         use: [
@@ -52,9 +67,10 @@ module.exports = {
   },
   plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: 'src/index.html',
+            favicon: './favicon.ico'
         }),
-        new ExtractTextPlugin('css/[name].css'),
+        new ExtractTextPlugin("css/[name].css"),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'js/base.js'
@@ -62,6 +78,9 @@ module.exports = {
     ],
     devServer: {
         // contentBase: './dist'
-        port: 8086
+        port: 8086,
+        historyApiFallback: {
+            index: '/dist/index.html'
+        }
        },
 };
