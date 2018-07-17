@@ -6,6 +6,9 @@
   "repository": "git@github.com:rkmd77/react_admin.git",
   "author": "rkmd77 <rochenz@outlook.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -27,6 +30,7 @@
   "dependencies": {
     "font-awesome": "^4.7.0",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1"
   }
 }
