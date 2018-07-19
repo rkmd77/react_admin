@@ -3,6 +3,7 @@ import { Link }     from 'react-router-dom';
 import MUtil        from 'util/util.jsx'
 import Product      from 'service/product-service.jsx'
 
+
 import PageTitle    from 'component/page-title/index.jsx';
 import TableList    from 'util/table-list/index.jsx';
 
@@ -47,7 +48,7 @@ class CategoryList extends React.Component{
     }
     // 更新品类的名字
     onUpdateName(categoryId, categoryName){
-        let newName = window.prompt('请输入新的品类名称', categoryName);
+        let newName = window.prompt('New Category Name: ', categoryName);
         if(newName){
             _product.updateCategoryName({
                 categoryId: categoryId,
@@ -68,10 +69,10 @@ class CategoryList extends React.Component{
                     <td>{category.name}</td>
                     <td>
                         <a className="opear"
-                            onClick={(e) => this.onUpdateName(category.id, category.name)}>修改名称</a>
+                            onClick={(e) => this.onUpdateName(category.id, category.name)}><i className="fa fa-edit"></i> Edit</a>
                         {
                             category.parentId === 0
-                            ? <Link to={`/product-category/index/${category.id}`}>查看子品类</Link>
+                            ? <Link className="opear btn-right" to={`/product-category/index/${category.id}`}><i className="fa fa-eye"></i> View Sub-Category</Link>
                             : null
                         }
                     </td> 
@@ -80,20 +81,20 @@ class CategoryList extends React.Component{
         });
         return (
             <div id="page-wrapper">
-                <PageTitle title="品类列表">
+                <PageTitle title="Category List">
                     <div className="page-header-right">
                         <Link to="/product-category/add" className="btn btn-primary">
                             <i className="fa fa-plus"></i>
-                            <span>添加品类</span>
+                            <span> Add New Category</span>
                         </Link>
                     </div>
                 </PageTitle>
                 <div className="row">
                     <div className="col-md-12">
-                        <p>父品类ID: {this.state.parentCategoryId}</p>
+                        <p>Parent Category ID: {this.state.parentCategoryId}</p>
                     </div>
                 </div>
-                <TableList tableHeads={['品类ID', '品类名称', '操作']}>
+                <TableList tableHeads={['Category ID', 'Category Name', 'Operation']}>
                     {listBody}
                 </TableList>
             </div>

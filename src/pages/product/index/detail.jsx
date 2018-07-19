@@ -50,50 +50,50 @@ class ProductDetail extends React.Component{
     render(){
         return (
             <div id="page-wrapper">
-                <PageTitle title="添加商品" />
+                <PageTitle title="View Product" />
                 <div className="form-horizontal">
                     <div className="form-group">
-                        <label className="col-md-2 control-label">商品名称</label>
+                        <label className="col-md-2 control-label">Product Name</label>
                         <div className="col-md-5">
                             <p className="form-control-static">{this.state.name}</p>
                         </div>
                     </div>
                     <div className="form-group">
-                        <label className="col-md-2 control-label">商品描述</label>
+                        <label className="col-md-2 control-label">Description</label>
                         <div className="col-md-5">
                             <p className="form-control-static">{this.state.subtitle}</p>
                         </div>
                     </div>
                     <div className="form-group">
-                        <label className="col-md-2 control-label">所属分类</label>
+                        <label className="col-md-2 control-label">Category</label>
                         <CategorySelector 
                             readOnly
                             categoryId={this.state.categoryId}
                             parentCategoryId={this.state.parentCategoryId}/>
                     </div>
                     <div className="form-group">
-                        <label className="col-md-2 control-label">商品价格</label>
+                        <label className="col-md-2 control-label">Price</label>
                         <div className="col-md-3">
                             <div className="input-group">
+                                <div className="input-group-addon">$</div>
                                 <input type="number" className="form-control" 
                                     value={this.state.price} readOnly/>
-                                <span className="input-group-addon">元</span>
                             </div>
                         </div>
                     </div>
                     <div className="form-group">
-                        <label className="col-md-2 control-label">商品库存</label>
+                        <label className="col-md-2 control-label">Stock</label>
                         <div className="col-md-3">
                             <div className="input-group">
                                 <input type="number" className="form-control"
                                     value={this.state.stock} readOnly/>
-                                <span className="input-group-addon">件</span>
+                                <span className="input-group-addon">unit</span>
                             </div>
                             
                         </div>
                     </div>
                     <div className="form-group">
-                        <label className="col-md-2 control-label">商品图片</label>
+                        <label className="col-md-2 control-label">Picture</label>
                         <div className="col-md-10">
                             {
                                 this.state.subImages.length ? this.state.subImages.map(
@@ -101,12 +101,12 @@ class ProductDetail extends React.Component{
                                     <div className="img-con" key={index}>
                                         <img className="img" src={image.url} />
                                     </div>)
-                                ) : (<div>暂无图片</div>)
+                                ) : (<div>no image found</div>)
                             }
                         </div>
                     </div>
                     <div className="form-group">
-                        <label className="col-md-2 control-label">商品详情</label>
+                        <label className="col-md-2 control-label">Details</label>
                         <div className="col-md-10" dangerouslySetInnerHTML={{__html: this.state.detail}}></div>
                     </div>
                 </div>

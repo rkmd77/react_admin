@@ -55,36 +55,36 @@ class CategoryAdd extends React.Component{
         }
         // 否则，提示错误
         else{
-            _mm.errorTips('请输入品类名称');
+            _mm.errorTips('Category Name required !');
         }
     }
     render(){
         return (
             <div id="page-wrapper">
-                <PageTitle title="品类列表"/>
+                <PageTitle title="Add Category"/>
                 <div className="row">
                     <div className="col-md-12">
                         <div className="form-horizontal">
                             <div className="form-group">
-                                <label className="col-md-2 control-label">所属品类</label>
+                                <label className="col-md-2 control-label">Category</label>
                                 <div className="col-md-5">
                                     <select name="parentId" 
                                         className="form-control"
                                         onChange={(e) => this.onValueChange(e)}>
-                                        <option value="0">根品类/</option>
+                                        <option value="0">Parent Category/</option>
                                         {
                                             this.state.categoryList.map((category, index) => {
-                                                return <option value={category.id} key={index}>根品类/{category.name}</option>
+                                                return <option value={category.id} key={index}>Parent Category/{category.name}</option>
                                             })
                                         }
                                     </select>
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label className="col-md-2 control-label">品类名称</label>
+                                <label className="col-md-2 control-label">Category Name</label>
                                 <div className="col-md-5">
                                     <input type="text" className="form-control" 
-                                        placeholder="请输入品类名称"
+                                        placeholder="Category Name"
                                         name="categoryName"
                                         value={this.state.name}
                                         onChange={(e) => this.onValueChange(e)}/>
@@ -93,7 +93,7 @@ class CategoryAdd extends React.Component{
                             <div className="form-group">
                                 <div className="col-md-offset-2 col-md-10">
                                     <button type="submit" className="btn btn-primary" 
-                                        onClick={(e) => {this.onSubmit(e)}}>提交</button>
+                                        onClick={(e) => {this.onSubmit(e)}}>Submit</button>
                                 </div>
                             </div>
                         </div>
